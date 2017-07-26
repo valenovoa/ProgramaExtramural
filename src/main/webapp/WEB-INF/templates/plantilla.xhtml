@@ -19,15 +19,17 @@
 
         <div id="top" class="top">
             <ui:insert name="top">
-                </ui:insert>
+                <h:graphicImage library="images" name="banner.jpg"  style="width: 100%"/>
+            </ui:insert>
         </div>
         <div>
             <div id="left">
                 <ui:insert name="left">
+                    <center><h2> #{menuController.mostrarUsuarioLogeado()} </h2></center>
                     <h:form>
                         <p:panelMenu  model="#{menuController.model}" style=" background-color: #D20005">
                             <f:facet name="options">
-                               
+
                             </f:facet>
                         </p:panelMenu>
                         <p:separator />
@@ -35,11 +37,11 @@
                                                   icon="ui-icon-power" action="/index?faces-redirect=true" style="width: 30%" />  </center>
 
                     </h:form>
-                    
+
                 </ui:insert>
             </div>
-            
-            
+
+
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>
             </div>

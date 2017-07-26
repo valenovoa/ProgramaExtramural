@@ -35,6 +35,9 @@ public class Usuario implements Serializable {
     
     @Column(name = "estado")
     private short estado = 1;
+    
+    @Column(name = "imagen")
+    private String imagen = "estudiante.jpg";
 
     public Persona getCodigo() {
         return codigo;
@@ -77,6 +80,16 @@ public class Usuario implements Serializable {
     public void setEstado(short estado) {
         this.estado = estado;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
 
     @Override
     public int hashCode() {

@@ -8,12 +8,10 @@
 
         <ui:composition template="./../WEB-INF/templates/plantilla.xhtml">
             
-            <ui:define name="top">
-                
-                <h:graphicImage value="../resources/images/banner.jpg" style="width: 100%"/>  
-            </ui:define>
             <ui:define name="content">
-                Hola usuario
+                <center>   <h1> Bienvenido #{menuController.mostrarUsuarioLogeado()} </h1> </center>
+                <center>
+                    <h:graphicImage library="images" name="#{menuController.mostrarImagen()}"  style="width: 50%"/></center>
             </ui:define>
 
         </ui:composition>
