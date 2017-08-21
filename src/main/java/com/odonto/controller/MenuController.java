@@ -52,16 +52,15 @@ public class MenuController implements Serializable{
     
     
     public void establecerPermisos() {
-        
         Usuario us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         
-        for (Menu m : lista){
-            if(m.getTipo().equals("S")&& m.getTipoUsuario().equals(us.getTipo())) {
+        for (Menu m : lista) {
+            if (m.getTipo().equals("S") && m.getTipoUsuario().equals(us.getTipo())) {
                 DefaultSubMenu firstSubmenu = new DefaultSubMenu(m.getNombre());
-                for(Menu i : lista){
+                for (Menu i : lista) {
                     Menu submenu = i.getSubmenu();
-                    if(submenu!=null){
-                        if(submenu.getCodigo() == m.getCodigo()){
+                    if (submenu != null) {
+                        if (submenu.getCodigo() == m.getCodigo()) {
                             DefaultMenuItem item = new DefaultMenuItem(i.getNombre());
                             item.setUrl(i.getUrl());
                             firstSubmenu.addElement(item);
@@ -69,17 +68,14 @@ public class MenuController implements Serializable{
                     }
                 }
                 model.addElement(firstSubmenu);
-            }else{
-                if(m.getSubmenu()==null && m.getTipoUsuario().equals(us.getTipo())) {
+            } else {
+                if (m.getSubmenu() == null && m.getTipoUsuario().equals(us.getTipo())) {
                     DefaultMenuItem item = new DefaultMenuItem(m.getNombre());
                     item.setUrl(m.getUrl());
                     model.addElement(item);
                 }
-                
             }
-            
         }
-    
     }
     
     public void cerrarSesion(){
@@ -94,5 +90,12 @@ public class MenuController implements Serializable{
         Usuario us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         return us.getImagen();
     }
+    
+     public String mostrarNombreUsuario(){
+        Usuario us = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+       
+        return us.getCodigo().getNombres() ;
+    }
+    
 
 }
