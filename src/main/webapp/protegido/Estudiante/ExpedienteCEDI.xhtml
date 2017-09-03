@@ -29,8 +29,9 @@
                             <p:calendar value="#{cedis.fechaNacimiento}"   pattern="dd/MM/yyyy" disabled="true"/>
                         </p:column>
                         <p:column headerText="Fichas">
+                            <h:commandLink  action="listadoFicha" actionListener="#{cediController.asignar(cedis)}">
                             <center>  <p:graphicImage library="images" name="edit.png"/></center>
-                            
+                            </h:commandLink>
                         </p:column>
                             
                         
@@ -48,7 +49,7 @@
                             <p:inputText value="#{cediController.cedi.nomPaciente}" required="true" requiredMessage="Campo requerido"/>
 
                             <p:outputLabel value="Fecha de nacimiento"/>
-                            <p:calendar value="#{cediController.cedi.fechaNacimiento}" navigator="true" required="true" requiredMessage="Campo requerido" />
+                            <p:calendar value="#{cediController.cedi.fechaNacimiento}" navigator="true" pattern="dd/MM/yyyy" required="true" requiredMessage="Campo requerido" />
 
                             <p:outputLabel value="Edad"/>
                             <p:inputMask mask="99" value="#{cediController.cedi.edad}" required="true" requiredMessage="Campo requerido"/>
@@ -77,6 +78,9 @@
                             <p:outputLabel value="Telefono"/>
                             <p:inputMask mask="9999-9999" value="#{cediController.cedi.telefono}" required="true" requiredMessage="Campo requerido"/>
                             
+                            <p:outputLabel value="Lugar de residencia" />
+                            <p:inputText value="#{cediController.cedi.direccion}" required="true" requiredMessage="Campo requerido" />
+                                         
                             <p:commandButton value="Registrar" icon="ui-icon-check" update="frmPrincipal:tabla" actionListener="#{cediController.registrar()}"
                                              oncomplete="PF('wdialogo').hide(); " />
                             <p:commandButton value="Cancelar" icon="ui-icon-close" immediate="true" onclick="PF('wdialogo').hide();" />

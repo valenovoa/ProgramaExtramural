@@ -7,16 +7,17 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-import javax.faces.view.ViewScoped;
+
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.primefaces.context.RequestContext;
+
 
 @Named
-@ViewScoped
+@RequestScoped
 public class CediController implements Serializable{
     
     @EJB
@@ -24,6 +25,8 @@ public class CediController implements Serializable{
     
     @Inject
     private ExpedienteCedi cedi;
+    
+    private ExpedienteCedi cediS;
     
     private List<ExpedienteCedi> cedis;
     
@@ -57,16 +60,27 @@ public class CediController implements Serializable{
     public void setAccion(String accion) {
         this.accion = accion;
     }
+
+    public ExpedienteCedi getCediS() {
+        return cediS;
+    }
+
+    public void setCediS(ExpedienteCedi cediS) {
+        this.cediS = cediS;
+    }
+    
+    
     
      public void registrar() {
          cediEJB.create(cedi);
          
          cedis = cediEJB.findAll();
          FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se registro"));
-       
-       
-             
     }
+     
+     public void asignar(ExpedienteCedi cediS){
+         this.cediS = cediS;
+     }
     /*  
     public void mostrarDialogo(){
         //logica

@@ -53,6 +53,9 @@ public class ExpedienteCedi implements Serializable{
 
     @Column(name = "sexo")
     private String sexo;
+    
+    @Column(name = "direccion")
+    private String direccion;
 
     public int getCodigo() {
         return codigo;
@@ -153,6 +156,16 @@ public class ExpedienteCedi implements Serializable{
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    
 
     @Override
     public int hashCode() {
